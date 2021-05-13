@@ -1,0 +1,13 @@
+Смотрите также
+
+    http://archlinux.org.ru/forum/topic/11748/ - Анатомия awesome
+    http://archlinux.org.ru/forum/topic/15184/ - Установка Awesome 3.5.6 и доведение его до рабочего состояния
+    https://awesome.naquadah.org/wiki/Main_Page/ru - Русскоязычная wiki awesome
+    http://awesome.naquadah.org/wiki/FAQ - ЧаВо
+    https://www.lua.org/pil/ - Программирование на Lua
+    http://awesome.naquadah.org/ - Официальный сайт awesome
+    http://awesome.naquadah.org/wiki/FAQ/ru - страница awesome wiki
+    http://www.penguinsightings.org/desktop/awesome/[устаревшая ссылка 2020-12-20] - Обзор
+    http://compsoc.tardis.ed.ac.uk/wiki/AwesomeWM_guide[устаревшая ссылка 2020-08-02] - Гайд по Awesome
+    https://bbs.archlinux.org/viewtopic.php?id=88926 - поделитесь своим awesome!
+    http://help.ubuntu.ru/wiki/awesome - Отличная русскоязычная документация

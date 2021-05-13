@@ -1,0 +1,112 @@
+#!/bin/bash
+
+function contextSwitch
+{
+	{
+	ctxt1=$()
+        ctxt2=$()
+        ctxt=$(($ctxt2 - $ctxt1))
+	}
+}
+
+# 0 - это высота | 0 это ширина | 20 это 
+while [ 1 ]
+do
+CHOICE=$(
+whiptail --title "Редактирование настроечного файла Awesome" --menu "\
+https://awesomewm.org/\n
+Клавишами верх/низ выберите справку и нажмите enter.\n
+Для выхода выберите End script." 0 0 20\
+	"1)" "Установка и удаление"\
+	"2)" "Версия"\
+	"3)" "Документация"\
+        "4)" "Путь у файлу rc.lua"\
+        "5)" "Мои редактирования rc.lua"\
+	"6)" "Путь у файлу theme.lua"\
+	"7)" "Мои редактирования theme.lua"\
+	"8)" "Горячие клавиши"\
+        "9)" "Терминал"\
+       "10)" "Программка для настройки тем окон"\
+       "11)" "Редактировать файл awesomeEditing"\
+       "12)" "Exit"\
+	3>&2 2>&1 1>&3
+)
+
+result=$()
+case $CHOICE in
+	"1)")   
+result="awesome
+        sudo apt-get install awesome\n
+        sudo apt-get remove awesome\n
+        Чтобы полностью удалить пакет и его конфигурационные файлы используется команда:
+        sudo apt purge awesome"
+        ;;
+	"2)")   
+result="awesome --version"
+	;;
+	"3)")
+result="man awesome"
+;;
+        "4)")
+result="\n
++---------------------------------------------------------------------------------------------------------------------------------------------+
+| При редактировании файла rc.lua с правами root файл rc.lua перещаписывается с правами root и при перезагрузке невохможно войти в awesome!!! |
++---------------------------------------------------------------------------------------------------------------------------------------------+\n
+cd /etc/xdg/awesome;ls -la\n
+Для редактирования войти с правами root
+sudo su\n
+ne rc.lua"
+;;
+        "5)")
+result="\n
++---------------------------------------------------------------------------------------------------------------------------------------------+
+| При редактировании файла rc.lua с правами root файл rc.lua перещаписывается с правами root и при перезагрузке невохможно войти в awesome!!! |
++---------------------------------------------------------------------------------------------------------------------------------------------+\n
+-- Each screen has its own tag table. | На каждом экране есть своя таблица тегов.
+awful.tag({ \"Terminal\", \"Web browser\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\" }, s, awful.layout.layouts[1])\n
+Пока всё"
+        ;;
+	"6)")
+result="cd /usr/share/awesome/themes/default;ls -la\n
+Для редактирования войти с правами root
+sudo su\n
+ne theme.lua"
+;;
+	"7)")   
+whiptail --textbox "theme.lua" 0 0 --scrolltext
+;;
+	"8)")   
+result="mod4+Enter   | Вызов терминала
+mod4+стрелка налево  | Переход в левый тег
+mod4+стрелка направо | Переход в правый тег"
+;;
+
+        "9)")   
+result=" Если не работает эмулятор терминала, то устанавливаешь terminator:
+ sudo apt-get install terminator\n
+ Он по умолчанию запускается"
+;;
+        "10)")   
+result="lxappearance
+sudo apt install lxappearance"
+;;
+	"11)")
+ne awesomeEditing
+;;
+        "12)")
+exit
+;;
+esac
+readarray -t newtcols < /etc/newt/palette
+
+newtcols_error=(
+window=white,yellow
+border=white,blue
+textbox=black,white
+button=white,red
+)
+
+NEWT_COLORS="${newtcols[@]} ${newtcols_error[@]}" \
+whiptail --msgbox "$result" 0 0
+done
+exit
